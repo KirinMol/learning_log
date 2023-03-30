@@ -1,0 +1,16 @@
+body {
+  background-color: #white;
+}
+
+.navbar-custom {
+    background-color: #495959;
+}
+
+.navbar-nav .nav-link {
+    color: #red;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}

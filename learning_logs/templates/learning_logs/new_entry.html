@@ -1,0 +1,16 @@
+{% extends "learning_logs/base.html" %}
+
+{% block page_header %}
+<h3><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></h3>
+{% endblock page_header %}
+
+{% block content %}
+
+  <p>Добавить новую запись:</p>
+  <form action="{% url 'learning_logs:new_entry' topic.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary mt-1">Добавить запись</button>
+  </form>
+
+{% endblock content %}

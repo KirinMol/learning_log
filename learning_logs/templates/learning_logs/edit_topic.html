@@ -1,0 +1,17 @@
+{% extends "learning_logs/base.html" %}
+
+{% block page_header %}
+  <h2>Редактировать тему</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+  <form action="{% url 'learning_logs:edit_topic' topic.id %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="text">Название темы:</label>
+      <input type="text" class="form-control" name="text" value="{{ topic.text }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+  </form>
+{% endblock content %}

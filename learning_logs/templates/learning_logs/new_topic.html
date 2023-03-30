@@ -1,0 +1,20 @@
+{% extends "learning_logs/base.html" %}
+
+{% block page_header %}
+  <h2>Добавить новую тему</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+  <form action="{% url 'learning_logs:new_topic' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="text">Название темы:</label>
+      <input type="text" class="form-control" name="text" value="{{ topic.text }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+  </form>
+
+{% endblock content %}
+
+

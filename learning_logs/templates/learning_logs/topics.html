@@ -1,0 +1,27 @@
+{% extends "learning_logs/base.html" %}
+
+{% block page_header %}
+  <h2>Темы</h2>
+{% endblock page_header %}
+
+{% block content %}
+
+  <ul>
+    {% for topic in topics %}
+      <li><h3>
+        <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+        <form action="{% url 'learning_logs:delete_topic' topic.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn-sm btn-primary mt-1">Удалить</button>
+          <button type="button" class="btn-sm btn-primary mt-1 ml-2"
+                  onclick="location.href='{% url 'learning_logs:edit_topic' topic.id %}'">Редактировать</button>
+        </form>
+      </h3></li>
+    {% empty %}
+      <li><h3>Еще не добавлено ни одной темы.</h3></li>
+    {% endfor %}
+  </ul>
+
+  <h3><a href="{% url 'learning_logs:new_topic' %}">Добавить новую тему</a></h3>
+
+{% endblock content %}
